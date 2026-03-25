@@ -11,7 +11,7 @@ const { title, id, defaultOpen = false } = Astro.props;
   <button
     id={`${id}-trigger`}
     class="accordion-trigger w-full flex items-center justify-between py-6 text-left group"
-    aria-expanded={String(defaultOpen)}
+    aria-expanded={defaultOpen}
     aria-controls={`${id}-content`}
   >
     <h3 class="font-serif font-bold text-xl lg:text-2xl text-navy group-hover:text-amber transition-colors">
@@ -43,7 +43,7 @@ const { title, id, defaultOpen = false } = Astro.props;
   document.querySelectorAll('.accordion-trigger').forEach(function (trigger) {
     trigger.addEventListener('click', function () {
       var expanded = trigger.getAttribute('aria-expanded') === 'true';
-      var contentId = trigger.getAttribute('aria-controls');
+      var contentId = trigger.getAttribute('aria-controls') as string;
       var content = document.getElementById(contentId);
       var icon = trigger.querySelector('.accordion-icon');
       trigger.setAttribute('aria-expanded', String(!expanded));
@@ -57,7 +57,7 @@ const { title, id, defaultOpen = false } = Astro.props;
     if (!hash) return;
     var target = document.getElementById(hash);
     if (!target || !target.classList.contains('accordion-item')) return;
-    var trigger = target.querySelector('.accordion-trigger');
+    var trigger = target.querySelector('.accordion-trigger') as HTMLButtonElement | null;
     var isExpanded = trigger && trigger.getAttribute('aria-expanded') === 'true';
     if (!isExpanded && trigger) trigger.click();
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });

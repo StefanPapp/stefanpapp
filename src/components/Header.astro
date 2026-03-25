@@ -86,12 +86,13 @@ const navLinks = [
     var closeIcon = document.getElementById('close-icon');
 
     if (sentinel && header) {
+      var h = header;
       var observer = new IntersectionObserver(
         function (entries) {
           if (entries[0].isIntersecting) {
-            header.classList.remove('bg-navy', 'shadow-lg');
+            h.classList.remove('bg-navy', 'shadow-lg');
           } else {
-            header.classList.add('bg-navy', 'shadow-lg');
+            h.classList.add('bg-navy', 'shadow-lg');
           }
         },
         { threshold: 0 }
@@ -100,12 +101,16 @@ const navLinks = [
     }
 
     if (toggle && menu && hamburger && closeIcon) {
-      toggle.addEventListener('click', function () {
-        var isOpen = !menu.classList.contains('hidden');
-        menu.classList.toggle('hidden');
-        hamburger.classList.toggle('hidden');
-        closeIcon.classList.toggle('hidden');
-        toggle.setAttribute('aria-expanded', String(!isOpen));
+      var t = toggle;
+      var m = menu;
+      var hb = hamburger;
+      var ci = closeIcon;
+      t.addEventListener('click', function () {
+        var isOpen = !m.classList.contains('hidden');
+        m.classList.toggle('hidden');
+        hb.classList.toggle('hidden');
+        ci.classList.toggle('hidden');
+        t.setAttribute('aria-expanded', String(!isOpen));
       });
     }
   })();
