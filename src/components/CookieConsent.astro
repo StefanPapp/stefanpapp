@@ -1,0 +1,74 @@
+---
+interface Props {
+  gaId?: string;
+}
+
+const { gaId = 'G-XXXXXXXXXX' } = Astro.props;
+---
+
+<div
+  id="cookie-consent"
+  class="fixed bottom-0 left-0 right-0 z-50 bg-navy text-white p-4 shadow-lg transition-transform translate-y-full"
+  role="region"
+  aria-label="Cookie consent"
+>
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-sm">
+      This site uses cookies for analytics to improve your experience.
+    </p>
+    <div class="flex gap-3">
+      <button
+        id="cookie-decline"
+        class="px-4 py-2 text-sm border border-white/30 rounded hover:bg-white/10 transition-colors"
+      >
+        Decline
+      </button>
+      <button
+        id="cookie-accept"
+        class="px-4 py-2 text-sm bg-amber rounded hover:bg-amber-light transition-colors text-navy font-semibold"
+      >
+        Accept
+      </button>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ gaId }}>
+  (function () {
+    const CONSENT_KEY = 'cookie_consent';
+    const consent = localStorage.getItem(CONSENT_KEY);
+    const banner = document.getElementById('cookie-consent');
+
+    function loadGA() {
+      if (document.getElementById('ga-script')) return;
+      const script = document.createElement('script');
+      script.id = 'ga-script';
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+      document.head.appendChild(script);
+      script.onload = function () {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', gaId);
+      };
+    }
+
+    if (consent === 'granted') {
+      loadGA();
+    } else if (consent === null) {
+      banner.classList.remove('translate-y-full');
+    }
+
+    document.getElementById('cookie-accept').addEventListener('click', function () {
+      localStorage.setItem(CONSENT_KEY, 'granted');
+      banner.classList.add('translate-y-full');
+      loadGA();
+    });
+
+    document.getElementById('cookie-decline').addEventListener('click', function () {
+      localStorage.setItem(CONSENT_KEY, 'denied');
+      banner.classList.add('translate-y-full');
+    });
+  })();
+</script>

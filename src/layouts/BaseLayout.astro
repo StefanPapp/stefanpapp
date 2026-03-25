@@ -1,0 +1,43 @@
+---
+import SEOHead from '../components/SEOHead.astro';
+import CookieConsent from '../components/CookieConsent.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  url: string;
+  jsonLd?: Record<string, unknown>;
+}
+
+const { title, description, ogImage, url, jsonLd } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <SEOHead
+      title={title}
+      description={description}
+      ogImage={ogImage}
+      url={url}
+      jsonLd={jsonLd}
+    />
+  </head>
+  <body>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-amber focus:text-navy focus:px-4 focus:py-2 focus:rounded" id="skip-to-content">
+      Skip to content
+    </a>
+
+    <!-- Header will be added in Task 3 -->
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <!-- Footer will be added in Task 4 -->
+
+    <CookieConsent />
+  </body>
+</html>

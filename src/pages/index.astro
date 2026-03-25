@@ -1,16 +1,23 @@
 ---
-import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Stefan Papp',
+  url: 'https://stefanpapp.com',
+  jobTitle: 'AI-Augmented Engineering Leader',
+  description: 'Engineering leader, investor, and independent thinker bridging idealism and pragmatism.',
+};
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stefan Papp</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  </head>
-  <body>
-    <h1>Stefan Papp</h1>
-  </body>
-</html>
+<BaseLayout
+  title="Stefan Papp — AI-Augmented Engineering & Thought Leadership"
+  description="Engineering leader, investor, and independent thinker. AI-augmented engineering, data transformations, and a worldview that bridges idealism and pragmatism."
+  url="/"
+  jsonLd={jsonLd}
+>
+  <section class="min-h-screen flex items-center justify-center">
+    <p class="text-2xl text-navy">Landing page content coming soon.</p>
+  </section>
+</BaseLayout>
