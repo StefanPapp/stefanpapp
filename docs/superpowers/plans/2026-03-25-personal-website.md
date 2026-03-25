@@ -87,6 +87,9 @@
 - Create: `src/styles/global.css`
 - Create: `public/robots.txt`
 - Create: `public/favicon.svg`
+- Create: `public/images/og-default.png` (placeholder)
+- Create: `public/images/headshot-placeholder.jpg` (placeholder)
+- Create: `.gitignore`
 
 - [ ] **Step 1: Initialize Astro project**
 
@@ -250,7 +253,28 @@ curl -L -o public/fonts/lora-bold.woff2 "https://fonts.gstatic.com/s/lora/v35/0Q
 
 If curl fails (URLs may change), manually download Inter (400, 600, 700) and Lora (400, 400i, 700) in woff2 from Google Fonts and place in `public/fonts/`.
 
-- [ ] **Step 8: Verify scaffold builds**
+- [ ] **Step 8: Create placeholder images and .gitignore**
+
+Create placeholder images early so components referencing them don't produce broken links:
+
+```bash
+# Generate OG image placeholder (1200x630) — or create any PNG manually
+convert -size 1200x630 xc:'#1a2332' -fill '#c8933e' -gravity center -pointsize 48 -font Georgia -annotate 0 'Stefan Papp' public/images/og-default.png 2>/dev/null || printf '\x89PNG\r\n' > public/images/og-default.png
+
+# Generate headshot placeholder (300x300) — or create any JPG manually
+convert -size 300x300 xc:'#e8e0d0' -fill '#64748b' -gravity center -pointsize 24 -annotate 0 'Photo' public/images/headshot-placeholder.jpg 2>/dev/null || printf '\xff\xd8\xff' > public/images/headshot-placeholder.jpg
+```
+
+Create `.gitignore`:
+
+```
+dist/
+node_modules/
+.astro/
+.DS_Store
+```
+
+- [ ] **Step 9: Verify scaffold builds**
 
 ```bash
 npx astro build
@@ -258,7 +282,7 @@ npx astro build
 
 Expected: Build completes with no errors. Output in `dist/`.
 
-- [ ] **Step 9: Commit**
+- [ ] **Step 10: Commit**
 
 ```bash
 git add -A
@@ -396,8 +420,8 @@ const { gaId = 'G-XXXXXXXXXX' } = Astro.props;
 <div
   id="cookie-consent"
   class="fixed bottom-0 left-0 right-0 z-50 bg-navy text-white p-4 shadow-lg transition-transform translate-y-full"
-  role="alert"
-  aria-live="polite"
+  role="region"
+  aria-label="Cookie consent"
 >
   <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
     <p class="text-sm">
@@ -972,8 +996,9 @@ const {
           <img
             src={headshotSrc}
             alt="Stefan Papp"
-            width={300}
-            height={300}
+            width="300"
+            height="300"
+            loading="eager"
             class="rounded-lg shadow-lg"
           />
         </div>
@@ -1441,6 +1466,7 @@ const { title, id, defaultOpen = false } = Astro.props;
 
 <div class="accordion-item border-b border-cream-dark" id={id}>
   <button
+    id={`${id}-trigger`}
     class="accordion-trigger w-full flex items-center justify-between py-6 text-left group"
     aria-expanded={String(defaultOpen)}
     aria-controls={`${id}-content`}
@@ -1464,7 +1490,7 @@ const { title, id, defaultOpen = false } = Astro.props;
     id={`${id}-content`}
     class:list={['accordion-content overflow-hidden', !defaultOpen && 'hidden']}
     role="region"
-    aria-labelledby={id}
+    aria-labelledby={`${id}-trigger`}
   >
     <div class="pb-8 font-serif text-slate leading-relaxed space-y-4">
       <slot />
@@ -1505,6 +1531,8 @@ const { title, id, defaultOpen = false } = Astro.props;
   window.addEventListener('hashchange', handleAnchorNav);
 </script>
 ```
+
+**Important:** The `<script>` tag must NOT use `is:inline`. Astro deduplicates non-inline scripts so the event listeners are only registered once, even though the Accordion component is instantiated three times on the worldview page. Adding `is:inline` would cause triple-registration and broken toggle behavior.
 
 - [ ] **Step 4: Create worldview.astro**
 
@@ -1862,25 +1890,14 @@ git commit -m "feat: add Playwright e2e tests for nav, accordion, form, and cons
 
 ---
 
-### Task 15: Final Verification + Placeholder Images + npm Scripts
+### Task 15: Final Verification + npm Scripts
 
 **Files:**
-- Create: `public/images/og-default.png`
-- Create: `public/images/headshot-placeholder.jpg`
 - Modify: `package.json` (add scripts)
 
-- [ ] **Step 1: Create placeholder images**
+Note: Placeholder images (`og-default.png`, `headshot-placeholder.jpg`) were already created in Task 1, Step 8.
 
-Create simple placeholder images. If ImageMagick is available:
-
-```bash
-convert -size 1200x630 xc:'#1a2332' -fill '#c8933e' -gravity center -pointsize 48 -font Georgia -annotate 0 'Stefan Papp' public/images/og-default.png
-convert -size 300x300 xc:'#e8e0d0' -fill '#64748b' -gravity center -pointsize 24 -annotate 0 'Photo' public/images/headshot-placeholder.jpg
-```
-
-Otherwise, create any 1200x630 PNG and 300x300 JPG manually and place in `public/images/`.
-
-- [ ] **Step 2: Add npm scripts to package.json**
+- [ ] **Step 1: Add npm scripts to package.json**
 
 Add to `package.json` scripts:
 
@@ -1896,6 +1913,14 @@ Add to `package.json` scripts:
   }
 }
 ```
+
+- [ ] **Step 2: Run astro check**
+
+```bash
+npx astro check
+```
+
+Expected: No errors in `.astro` files.
 
 - [ ] **Step 3: Run full build**
 
@@ -1913,7 +1938,7 @@ npm test && npm run test:e2e
 
 Expected: All build tests and e2e tests PASS.
 
-- [ ] **Step 5: Verify all pages generated**
+- [ ] **Step 5: Verify all pages and sitemap generated**
 
 ```bash
 ls dist/index.html dist/404.html dist/sitemap-index.xml
