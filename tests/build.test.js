@@ -104,4 +104,13 @@ describe('Build output', () => {
   it('generates leadership page', () => {
     assert.ok(existsSync('dist/leadership/index.html'));
   });
+
+  it('generates investments page', () => {
+    assert.ok(existsSync('dist/investments/index.html'));
+  });
+
+  it('investments page contains disclaimer', () => {
+    const html = readFileSync('dist/investments/index.html', 'utf-8');
+    assert.ok(html.includes('Past performance'));
+  });
 });

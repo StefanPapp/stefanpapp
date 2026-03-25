@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const stats = [
+  { value: '8+', label: 'Total Investments' },
+  { value: '2', label: 'Realized Exits' },
+  { value: '4.9×', label: 'Avg Realized Return' },
+  { value: '6', label: 'Active Portfolio' },
+];
+
+const portfolio = [
+  {
+    name: 'Stackform',
+    description: 'Infrastructure-as-code abstraction layer for multi-cloud deployments. Founded by two former SREs who had rebuilt the same tooling three times at different companies.',
+    year: '2021',
+    status: 'Active',
+    returnNote: 'Marked up 2.1× at Series A led by Tier 1 fund.',
+  },
+  {
+    name: 'Meridian Data',
+    description: 'Column-store analytics database optimized for time-series workloads in industrial IoT. Strong technical moat; founder holds two relevant patents.',
+    year: '2022',
+    status: 'Active',
+    returnNote: 'Growing ARR 3× YoY as of last update.',
+  },
+  {
+    name: 'Fenix Observability',
+    description: 'Unified observability platform targeting mid-market teams priced out of Datadog. Built by an engineer who ran observability at a publicly traded SaaS company.',
+    year: '2020',
+    status: 'Acquired',
+    returnNote: '3.8× return at acquisition by strategic buyer.',
+  },
+  {
+    name: 'Routekit',
+    description: 'Developer tooling for API gateway configuration and traffic management. Reduces the time to configure complex routing rules from days to minutes.',
+    year: '2023',
+    status: 'Active',
+    returnNote: 'Pre-revenue; strong design partner traction.',
+  },
+  {
+    name: 'Cartograph AI',
+    description: 'Code intelligence platform that builds and maintains semantic graphs of large codebases. Helps teams answer "where does this logic live?" in seconds instead of hours.',
+    year: '2022',
+    status: 'Active',
+    returnNote: 'Expanding usage from 3 pilot customers to 12.',
+  },
+  {
+    name: 'Thornfield Security',
+    description: 'Supply chain security tooling focused on dependency provenance and license compliance for regulated industries. Founded by two ex-government security researchers.',
+    year: '2019',
+    status: 'Acquired',
+    returnNote: '6.0× return at exit. Best performing investment to date.',
+  },
+];
+---
+
+<BaseLayout
+  title="Investment Philosophy & Portfolio — Stefan Papp"
+  description="How I think about angel investing, what I look for in technical founders, and the companies I have backed."
+  url="/investments"
+>
+  <!-- Hero Banner -->
+  <section class="bg-navy pt-24 pb-20 px-4 md:px-8">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-bold text-white font-sans mb-6 leading-tight">
+        Investment Philosophy &amp; Portfolio
+      </h1>
+      <p class="text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed">
+        I write small checks into developer tools and infrastructure companies founded by engineers who have lived the problem they are solving. Not a fund — just a practitioner who wants to help the next generation of technical builders get off the ground.
+      </p>
+    </div>
+  </section>
+
+  <!-- Philosophy Section -->
+  <section class="py-16 md:py-24 px-4 md:px-8 bg-white">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-navy font-sans mb-8">How I think about investing</h2>
+      <div class="space-y-6 text-slate leading-relaxed text-lg">
+        <p>
+          My investment thesis is narrow by design. I back developer tools and infrastructure companies at the pre-seed and seed stage, with checks between $25K and $100K. I am not trying to build a diversified portfolio that hedges across categories — I am concentrating in the one domain where I have genuine pattern recognition from twenty years of building and leading engineering teams. I know what these companies need to do to earn adoption, I know the sales motion, and I know which technical founders have the instincts to execute.
+        </p>
+        <p>
+          The founder profile I look for is someone who built the thing they are selling because they needed it and could not find it — not because they read a market sizing report. The best companies in this space are founded by engineers who have rebuilt the same internal tool at three consecutive companies and finally decided to do it once properly. That direct problem experience shows up in product decisions that no amount of customer research can substitute for. It is the difference between founders who understand their users and founders who are their users.
+        </p>
+        <p>
+          Beyond capital, I try to be useful in ways that money cannot replicate: introductions to engineering leaders who are realistic potential customers, technical review of architecture decisions at the critical early stage, and honest feedback on what the product actually does versus what the pitch deck says it does. I have no interest in being a passive investor at this stage of a company's life. If I cannot find a way to be genuinely helpful, I should not be on the cap table.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metrics Strip -->
+  <section class="bg-cream-dark py-12 px-4 md:px-8">
+    <div class="max-w-4xl mx-auto flex flex-wrap justify-around gap-8">
+      {stats.map((stat) => (
+        <div class="text-center">
+          <p class="font-sans text-4xl font-bold text-navy mb-1">{stat.value}</p>
+          <p class="font-sans text-sm text-slate tracking-wide uppercase">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Portfolio Grid -->
+  <section class="py-16 md:py-24 px-4 md:px-8 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-navy font-sans mb-4">Portfolio</h2>
+      <p class="text-slate text-lg mb-12 max-w-2xl">
+        Representative investments. Company names are illustrative stand-ins for privacy.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {portfolio.map((company) => (
+          <div class="bg-white border border-cream-dark rounded-lg p-6 shadow-sm">
+            <h3 class="font-sans font-bold text-xl text-navy mb-2">{company.name}</h3>
+            <p class="font-sans text-slate text-sm leading-relaxed mb-4">{company.description}</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="font-sans text-xs text-slate bg-cream-dark rounded-full px-3 py-1">
+                Invested {company.year}
+              </span>
+              <span class={`font-sans text-xs rounded-full px-3 py-1 ${company.status === 'Acquired' ? 'bg-navy text-white' : 'bg-cream-dark text-slate'}`}>
+                {company.status}
+              </span>
+            </div>
+            <p class="font-sans text-sm font-semibold text-amber">{company.returnNote}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Disclaimer -->
+  <section class="py-12 px-4 md:px-8 bg-cream-dark">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="font-sans text-xs text-slate leading-relaxed">
+        Past performance is not indicative of future results. Returns shown are based on personal records and may not reflect all fees or expenses. Nothing on this page constitutes investment advice. All investments involve risk, including the possible loss of principal.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
