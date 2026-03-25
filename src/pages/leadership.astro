@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const roles = [
+  {
+    timeframe: '2020 – 2024',
+    title: 'VP of Engineering',
+    org: 'Series C SaaS — Revenue Intelligence',
+    description:
+      'Scaled the engineering org from 18 to 65 across four product squads. Introduced quarterly planning, a blameless incident review process, and a staff-level career ladder. Led the platform rewrite that enabled the company to close its Series C at a 6× ARR multiple.',
+  },
+  {
+    timeframe: '2017 – 2020',
+    title: 'Engineering Director',
+    org: 'Data Analytics Platform',
+    description:
+      'Owned the full-stack data pipeline and the team of 22 engineers building it. Rebuilt the ingestion layer to handle 10× data volume after a major customer acquisition. Reduced p99 query latency from 4.2 s to 380 ms without a schema migration.',
+  },
+  {
+    timeframe: '2014 – 2017',
+    title: 'Senior Engineering Manager',
+    org: 'E-Commerce Scale-Up',
+    description:
+      'Managed three teams covering checkout, catalog, and search. Led the migration from a monolithic Rails app to a service-oriented architecture over 18 months. Zero downtime during Black Friday at 40× peak load — the first time that had happened in the company\'s history.',
+  },
+  {
+    timeframe: '2011 – 2014',
+    title: 'Tech Lead',
+    org: 'Fintech Startup',
+    description:
+      'First engineering hire. Built and later led a team of seven. Designed the payments integration and the real-time fraud detection pipeline that processed $2 M in daily transaction volume at the time of acquisition. Helped the founders through the technical due diligence process.',
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      'Stefan has a rare quality among engineering leaders: he sets direction clearly, then genuinely gets out of the way. He trusts you to figure out the how, and that trust is not passive — it is the kind that makes you want to rise to meet it. In four years I never once felt micromanaged, and I never once felt unsupported.',
+    attribution: '— Staff Engineer, Series C SaaS (worked together 2020–2024)',
+  },
+  {
+    quote:
+      'What sets Stefan apart is how he handles hard conversations. He does not soften uncomfortable feedback until it loses its point, and he does not deliver it in a way that makes it about him. You leave those conversations with a clearer picture of the problem and a sense that you have an ally in solving it. I learned more about how to communicate clearly in two years working for him than in the previous six combined.',
+    attribution: '— Engineering Manager, Data Analytics Platform (worked together 2018–2020)',
+  },
+];
+---
+
+<BaseLayout
+  title="Leadership & Track Record — Stefan Papp"
+  description="How I lead engineering organizations — and what that has produced. Philosophy, track record, and what people who have worked with me say."
+  url="/leadership"
+>
+  <!-- Hero Banner -->
+  <section class="bg-navy pt-24 pb-20 px-4 md:px-8">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-bold text-white font-sans mb-6 leading-tight">
+        Leadership &amp; Track Record
+      </h1>
+      <p class="text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed">
+        My job as an engineering leader is to set direction clearly, hire people better than me, and then mostly get out of the way. The outcomes below are theirs. The conditions that made them possible were mine to create.
+      </p>
+    </div>
+  </section>
+
+  <!-- Philosophy Section -->
+  <section class="py-16 md:py-24 px-4 md:px-8 bg-white">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-navy font-sans mb-8">How I think about leadership</h2>
+      <div class="space-y-6 text-slate leading-relaxed text-lg">
+        <p>
+          The single highest-leverage thing an engineering leader can do is hire well and then resist the urge to justify their own position by making decisions that their reports should be making. Great engineers do not want to be told how to solve problems — they want clear context about what matters and why, genuine ownership of the solution space, and an environment where it is safe to be wrong. My job is to create those conditions and then hold myself accountable to the outcomes.
+        </p>
+        <p>
+          I practice radical transparency about strategy, constraints, and trade-offs. That means sharing the reasoning behind decisions, including the uncomfortable ones, and inviting scrutiny rather than managing perception. It also means being honest when I do not know something — which is more often than most leaders are willing to admit. I would rather my teams have an accurate picture of the uncertainty we are operating in than false confidence based on information I have withheld.
+        </p>
+        <p>
+          On failure: I have run blameless post-mortems for over a decade because they produce better information, not just because they are kinder. When the goal of an incident review is to understand the system, you get honest accounts of what actually happened. When the goal is to assign fault, you get defensive accounts designed to protect the narrator. Defensive accounts are useless for preventing the next incident. A culture that treats failure as information — while still distinguishing between systemic failures and genuine negligence — will out-learn one that treats failure as evidence of individual shortcoming, every time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Track Record Section -->
+  <section class="bg-cream-dark py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-navy font-sans mb-4">Track record</h2>
+      <p class="text-slate text-lg mb-12 max-w-2xl">
+        Company names are omitted out of respect for former employers. Details are accurate.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {roles.map((role) => (
+          <div class="bg-white rounded-lg p-8 shadow-sm">
+            <span class="inline-block font-sans text-sm font-semibold text-amber mb-3 tracking-wide uppercase">
+              {role.timeframe}
+            </span>
+            <h3 class="font-sans font-bold text-xl text-navy mb-1">{role.title}</h3>
+            <p class="font-sans text-slate text-sm font-medium mb-4">{role.org}</p>
+            <p class="font-sans text-slate leading-relaxed">{role.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-16 md:py-24 px-4 md:px-8 bg-white">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-navy font-sans mb-12">What people say</h2>
+      <div class="space-y-12">
+        {testimonials.map((t) => (
+          <blockquote class="border-l-4 border-amber pl-6">
+            <p class="font-serif text-lg text-slate leading-relaxed italic mb-4">{t.quote}</p>
+            <footer class="font-sans text-sm text-slate/70">{t.attribution}</footer>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

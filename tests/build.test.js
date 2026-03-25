@@ -100,4 +100,8 @@ describe('Build output', () => {
     assert.ok(html.includes('cats'));
     assert.ok(html.includes('aria-expanded'));
   });
+
+  it('generates leadership page', () => {
+    assert.ok(existsSync('dist/leadership/index.html'));
+  });
 });
