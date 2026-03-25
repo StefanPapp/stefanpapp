@@ -125,4 +125,8 @@ describe('Build output', () => {
     assert.ok(html.includes('name="name"'));
     assert.ok(html.includes('name="email"'));
   });
+
+  it('generates 404 page', () => {
+    assert.ok(existsSync('dist/404.html'));
+  });
 });
