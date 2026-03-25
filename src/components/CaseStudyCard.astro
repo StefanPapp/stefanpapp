@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string;
+  challenge: string;
+  approach: string;
+  outcome: string;
+}
+
+const { title, challenge, approach, outcome } = Astro.props;
+---
+
+<div class="bg-white rounded-xl border border-cream-dark p-8">
+  <h3 class="text-xl font-bold text-navy font-sans mb-6">{title}</h3>
+
+  <div class="space-y-5">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-widest text-amber mb-2">Challenge</p>
+      <p class="text-slate leading-relaxed">{challenge}</p>
+    </div>
+
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-widest text-amber mb-2">Approach</p>
+      <p class="text-slate leading-relaxed">{approach}</p>
+    </div>
+
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-widest text-amber mb-2">Outcome</p>
+      <p class="text-slate leading-relaxed">{outcome}</p>
+    </div>
+  </div>
+</div>
