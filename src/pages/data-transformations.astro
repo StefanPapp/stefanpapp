@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceBlock from '../components/ServiceBlock.astro';
+import CaseStudyCard from '../components/CaseStudyCard.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Data Transformations — Stefan Papp',
+  description: 'Data infrastructure engineering: ETL pipelines, data migration, and architecture consulting.',
+  provider: { '@type': 'Person', name: 'Stefan Papp' },
+};
+
+const etlIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="M4 4h16v4H4z"/>
+  <path d="M4 10h16v4H4z"/>
+  <path d="M4 16h16v4H4z"/>
+  <path d="M8 6h.01M8 12h.01M8 18h.01"/>
+</svg>`;
+
+const migrationIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="M5 12h14"/>
+  <path d="M12 5l7 7-7 7"/>
+  <circle cx="5" cy="12" r="2"/>
+</svg>`;
+
+const architectureIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <rect x="2" y="3" width="6" height="6" rx="1"/>
+  <rect x="16" y="3" width="6" height="6" rx="1"/>
+  <rect x="9" y="15" width="6" height="6" rx="1"/>
+  <path d="M5 9v3h14V9"/>
+  <path d="M12 12v3"/>
+</svg>`;
+
+const services = [
+  {
+    title: 'ETL Pipelines',
+    description: 'I design and build extract-transform-load pipelines that are reliable, observable, and easy to reason about. Whether you are ingesting from third-party APIs, CDC streams, or flat files, the goal is the same: data that arrives on time, in the right shape, with enough context to debug when something inevitably changes upstream.',
+    icon: etlIcon,
+  },
+  {
+    title: 'Data Migration',
+    description: 'Moving data between systems is one of the highest-risk operations an engineering team undertakes, and it is almost always underestimated. I have run migrations from legacy warehouses to modern cloud platforms, from monolithic schemas to multi-tenant architectures, and from on-premise databases to managed services — with zero tolerance for silent data loss.',
+    icon: migrationIcon,
+  },
+  {
+    title: 'Data Architecture',
+    description: 'Before writing a single query, it is worth spending real time on schema design, partitioning strategy, and the access patterns your downstream consumers actually need. I help teams make those decisions deliberately, so the architecture supports the product roadmap rather than quietly constraining it three years from now.',
+    icon: architectureIcon,
+  },
+];
+
+const caseStudies = [
+  {
+    title: 'Real-Time Analytics Pipeline for a B2B SaaS Platform',
+    challenge: 'A product analytics team was running nightly batch jobs to populate their dashboards. By the time account managers logged in each morning, the data was already 12 hours stale — too slow to respond to churning accounts or spot onboarding drop-off in time to intervene. The existing pipeline was also fragile: any schema change from upstream engineering would silently corrupt aggregates.',
+    approach: 'We rebuilt the pipeline using event streaming with a schema registry at the ingestion boundary. Every event was validated on arrival, and failures were routed to a dead-letter queue with enough context to replay once the upstream issue was resolved. The transformation layer was rewritten as a series of small, testable steps rather than one large SQL block that nobody wanted to touch.',
+    outcome: 'Dashboard latency dropped from 12 hours to under 90 seconds. The account management team started catching churn signals the same day they appeared. The schema registry caught three breaking upstream changes in the first month, all before they could corrupt production data.',
+  },
+  {
+    title: 'Zero-Downtime Migration to Multi-Tenant Data Architecture',
+    challenge: 'A growing B2B platform had built its data model around a single-tenant assumption early in its life. As the customer base expanded into enterprise accounts with data isolation requirements, the team needed to migrate to a multi-tenant architecture — without interrupting service for existing customers or losing any historical data in the process.',
+    approach: 'The migration was designed as a series of backwards-compatible steps, each independently reversible. We used a dual-write pattern during the transition period so new data landed in both the old and new schemas simultaneously. Backfill jobs ran incrementally during off-peak hours, with checksums verified at every batch boundary. The cutover itself was a flag flip, not a data operation.',
+    outcome: 'The migration completed over six weeks with no customer-visible downtime and no data loss. The new schema supported enterprise data isolation requirements out of the box, which unblocked three enterprise contracts that had stalled on security review. The dual-write infrastructure was later reused for a separate warehouse migration.',
+  },
+];
+---
+
+<BaseLayout
+  title="Data Transformations — Stefan Papp"
+  description="Data infrastructure engineering: ETL pipelines, data migration, and architecture consulting. Building data systems that are reliable, observable, and easy to reason about."
+  url="/data-transformations"
+  jsonLd={jsonLd}
+>
+  <!-- Hero Banner -->
+  <section class="bg-navy pt-24 pb-20 px-4 md:px-8">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-bold text-white font-sans mb-6 leading-tight">
+        Data Transformations
+      </h1>
+      <p class="text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed">
+        Building the data infrastructure that makes everything else possible — pipelines that run, schemas that hold, and migrations that don't keep you up at night.
+      </p>
+    </div>
+  </section>
+
+  <!-- Intro Section -->
+  <section class="py-16 md:py-24 px-4 md:px-8 bg-white">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-navy font-sans mb-8">Data That Works For You</h2>
+      <div class="space-y-6 text-slate leading-relaxed text-lg">
+        <p>
+          Most data problems are not analytics problems — they are plumbing problems. Data arrives late, in the wrong format, or not at all. Pipelines that worked fine for three months quietly start dropping records after an upstream API change. Migrations get planned as weekend projects and turn into month-long incidents. The dashboards show numbers that nobody quite trusts anymore, but nobody can pinpoint exactly where the error is introduced.
+        </p>
+        <p>
+          I have spent a long time working on this layer of the stack — not the visualization or the business intelligence surface, but the unglamorous infrastructure underneath it. The part that decides whether the data arriving at your warehouse is actually the data you think it is. Good data infrastructure is invisible when it works and catastrophic when it does not, which means it deserves more deliberate engineering attention than it typically gets. My work is focused on building data systems that hold up under the conditions of a real, changing product: schema evolution, third-party API instability, growing data volumes, and teams that do not always have time to read the runbook.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="bg-cream-dark py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-navy font-sans mb-4 text-center">What I build</h2>
+      <p class="text-slate text-lg text-center mb-12 max-w-2xl mx-auto">
+        Engagements start with understanding your data's actual path from source to consumption, not a product tier.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {services.map((service) => (
+          <ServiceBlock
+            title={service.title}
+            description={service.description}
+            icon={service.icon}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Section -->
+  <section class="py-16 md:py-24 px-4 md:px-8 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-navy font-sans mb-4">Case studies</h2>
+      <p class="text-slate text-lg mb-12 max-w-2xl">
+        Details are anonymized. Outcomes are real.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {caseStudies.map((study) => (
+          <CaseStudyCard
+            title={study.title}
+            challenge={study.challenge}
+            approach={study.approach}
+            outcome={study.outcome}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-navy py-20 px-4 md:px-8 text-center">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl md:text-5xl font-bold text-white font-sans mb-6">Let's fix your data</h2>
+      <p class="text-white/75 text-lg mb-10 max-w-xl mx-auto">
+        Tell me where the pipeline breaks, what the migration is blocking, or why the numbers stopped making sense.
+      </p>
+      <a
+        href="/contact"
+        class="inline-block bg-amber text-white font-semibold px-10 py-4 rounded hover:bg-amber-light transition-colors duration-200"
+      >
+        Get in touch
+      </a>
+    </div>
+  </section>
+</BaseLayout>

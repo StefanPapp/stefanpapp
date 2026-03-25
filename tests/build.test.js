@@ -84,4 +84,20 @@ describe('Build output', () => {
     assert.ok(html.includes('Integration'));
     assert.ok(html.includes('Training'));
   });
+
+  it('generates data-transformations page', () => {
+    assert.ok(existsSync('dist/data-transformations/index.html'));
+  });
+
+  it('generates worldview page', () => {
+    assert.ok(existsSync('dist/worldview/index.html'));
+  });
+
+  it('worldview contains accordion sections', () => {
+    const html = readFileSync('dist/worldview/index.html', 'utf-8');
+    assert.ok(html.includes('libertarianism'));
+    assert.ok(html.includes('growth-culture'));
+    assert.ok(html.includes('cats'));
+    assert.ok(html.includes('aria-expanded'));
+  });
 });
