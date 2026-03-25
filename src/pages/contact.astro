@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<BaseLayout
+  title="Get in Touch — Stefan Papp"
+  description="Contact Stefan Papp about consulting, speaking, investment opportunities, or anything else."
+  url="/contact"
+>
+  <!-- Hero Banner -->
+  <section class="bg-navy pt-24 pb-20 px-4 md:px-8">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-bold text-white font-sans mb-6 leading-tight">
+        Get in Touch
+      </h1>
+      <p class="text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed">
+        I respond to every message personally. If we are a good fit for whatever you have in mind, I will say so clearly. If we are not, I will tell you that too.
+      </p>
+    </div>
+  </section>
+
+  <!-- Two-column layout -->
+  <section class="py-16 md:py-24 px-4 md:px-8 bg-white">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+
+      <!-- Left: Form -->
+      <div>
+        <h2 class="font-sans font-bold text-2xl text-navy mb-6">Send a message</h2>
+        <ContactForm formspreeId="YOUR_FORMSPREE_ID" />
+      </div>
+
+      <!-- Right: What to expect + social + calendar -->
+      <div>
+        <h2 class="font-sans font-bold text-2xl text-navy mb-6">What to expect</h2>
+        <div class="space-y-4 text-slate leading-relaxed mb-10">
+          <p>
+            I check messages every weekday morning and aim to reply within two business days. If you are reaching out about a consulting engagement, it helps to include a sentence or two about the size of your team and what you are trying to change — that gives me enough context to say whether it is worth setting up a call.
+          </p>
+          <p>
+            For investment inquiries: I write pre-seed and seed checks between $25K and $100K into developer tools and infrastructure. If that matches what you are building, tell me what stage you are at and what problem you are solving. I do not require a formal deck for a first conversation.
+          </p>
+        </div>
+
+        <!-- Social links -->
+        <div class="mb-10">
+          <h3 class="font-sans font-semibold text-navy mb-4">Find me elsewhere</h3>
+          <ul class="space-y-3">
+            <li>
+              <a
+                href="https://www.linkedin.com/in/stefan-papp"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-3 font-sans text-sm text-slate hover:text-navy transition-colors"
+              >
+                <!-- LinkedIn icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a1.98 1.98 0 0 1-1.977-1.98 1.98 1.98 0 1 1 1.977 1.98zm1.709 13.019H3.626V9h3.42v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://x.com/stefanpapp"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-3 font-sans text-sm text-slate hover:text-navy transition-colors"
+              >
+                <!-- X / Twitter icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                X / Twitter
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/stefanpapp"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-3 font-sans text-sm text-slate hover:text-navy transition-colors"
+              >
+                <!-- GitHub icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23a11.52 11.52 0 0 1 3.003-.404c1.02.005 2.045.138 3.003.404 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                </svg>
+                GitHub
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Calendar booking placeholder -->
+        <div class="bg-cream-dark rounded-lg p-6">
+          <h3 class="font-sans font-semibold text-navy mb-2">Book a call</h3>
+          <p class="font-sans text-sm text-slate mb-4 leading-relaxed">
+            Prefer to talk first? Use the link below to book a 30-minute intro call directly on my calendar.
+          </p>
+          <a
+            href="#calendar"
+            class="inline-block font-sans text-sm font-semibold text-amber hover:text-amber-light transition-colors"
+          >
+            View available times →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

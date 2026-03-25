@@ -113,4 +113,16 @@ describe('Build output', () => {
     const html = readFileSync('dist/investments/index.html', 'utf-8');
     assert.ok(html.includes('Past performance'));
   });
+
+  it('generates contact page', () => {
+    assert.ok(existsSync('dist/contact/index.html'));
+  });
+
+  it('contact page contains form with required fields', () => {
+    const html = readFileSync('dist/contact/index.html', 'utf-8');
+    assert.ok(html.includes('<form'));
+    assert.ok(html.includes('formspree'));
+    assert.ok(html.includes('name="name"'));
+    assert.ok(html.includes('name="email"'));
+  });
 });
