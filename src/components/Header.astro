@@ -1,0 +1,112 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { label: 'AI Engineering', href: '/ai-engineering' },
+  { label: 'Data Transformations', href: '/data-transformations' },
+  { label: 'Worldview', href: '/worldview' },
+  { label: 'Leadership', href: '/leadership' },
+  { label: 'Investments', href: '/investments' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<header id="site-header" class="fixed top-0 left-0 right-0 z-40 transition-colors duration-300">
+  <div class="max-w-6xl mx-auto px-4 md:px-8 flex items-center justify-between h-16">
+    <a href="/" class="font-sans font-bold text-xl text-white hover:text-amber transition-colors">
+      Stefan Papp
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-6" aria-label="Main navigation">
+      {navLinks.map(({ label, href }) => (
+        <a
+          href={href}
+          class:list={[
+            'text-sm font-sans transition-colors',
+            currentPath === href || currentPath === href + '/'
+              ? 'text-amber'
+              : 'text-white/80 hover:text-white',
+          ]}
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="mobile-menu-toggle"
+      class="md:hidden text-white p-2"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <nav
+    id="mobile-menu"
+    class="md:hidden hidden bg-navy border-t border-white/10"
+    aria-label="Mobile navigation"
+  >
+    <div class="px-4 py-4 flex flex-col gap-3">
+      {navLinks.map(({ label, href }) => (
+        <a
+          href={href}
+          class:list={[
+            'text-base font-sans py-2 transition-colors',
+            currentPath === href || currentPath === href + '/'
+              ? 'text-amber'
+              : 'text-white/80 hover:text-white',
+          ]}
+        >
+          {label}
+        </a>
+      ))}
+    </div>
+  </nav>
+</header>
+
+<!-- Sentinel element for IntersectionObserver -->
+<div id="header-sentinel" class="absolute top-0 h-1 w-full"></div>
+
+<script>
+  (function () {
+    var header = document.getElementById('site-header');
+    var sentinel = document.getElementById('header-sentinel');
+    var toggle = document.getElementById('mobile-menu-toggle');
+    var menu = document.getElementById('mobile-menu');
+    var hamburger = document.getElementById('hamburger-icon');
+    var closeIcon = document.getElementById('close-icon');
+
+    if (sentinel && header) {
+      var observer = new IntersectionObserver(
+        function (entries) {
+          if (entries[0].isIntersecting) {
+            header.classList.remove('bg-navy', 'shadow-lg');
+          } else {
+            header.classList.add('bg-navy', 'shadow-lg');
+          }
+        },
+        { threshold: 0 }
+      );
+      observer.observe(sentinel);
+    }
+
+    if (toggle && menu && hamburger && closeIcon) {
+      toggle.addEventListener('click', function () {
+        var isOpen = !menu.classList.contains('hidden');
+        menu.classList.toggle('hidden');
+        hamburger.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+      });
+    }
+  })();
+</script>

@@ -1,6 +1,7 @@
 ---
 import SEOHead from '../components/SEOHead.astro';
 import CookieConsent from '../components/CookieConsent.astro';
+import Header from '../components/Header.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -30,7 +31,7 @@ const { title, description, ogImage, url, jsonLd } = Astro.props;
       Skip to content
     </a>
 
-    <!-- Header will be added in Task 3 -->
+    <Header />
 
     <main id="main-content">
       <slot />

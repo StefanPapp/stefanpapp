@@ -34,4 +34,16 @@ describe('Build output', () => {
     const html = readFileSync('dist/index.html', 'utf-8');
     assert.ok(html.includes('cookie-consent'));
   });
+
+  it('index.html contains nav element', () => {
+    const html = readFileSync('dist/index.html', 'utf-8');
+    assert.ok(html.includes('<nav'));
+  });
+
+  it('index.html contains all nav links', () => {
+    const html = readFileSync('dist/index.html', 'utf-8');
+    assert.ok(html.includes('/ai-engineering'));
+    assert.ok(html.includes('/worldview'));
+    assert.ok(html.includes('/contact'));
+  });
 });
