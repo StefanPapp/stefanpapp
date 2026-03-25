@@ -73,4 +73,15 @@ describe('Build output', () => {
     const html = readFileSync('dist/index.html', 'utf-8');
     assert.ok(html.includes('social-proof'));
   });
+
+  it('generates ai-engineering page', () => {
+    assert.ok(existsSync('dist/ai-engineering/index.html'));
+  });
+
+  it('ai-engineering contains service blocks', () => {
+    const html = readFileSync('dist/ai-engineering/index.html', 'utf-8');
+    assert.ok(html.includes('Consulting'));
+    assert.ok(html.includes('Integration'));
+    assert.ok(html.includes('Training'));
+  });
 });

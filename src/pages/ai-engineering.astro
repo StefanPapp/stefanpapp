@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceBlock from '../components/ServiceBlock.astro';
+import CaseStudyCard from '../components/CaseStudyCard.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'AI Augmented Engineering — Stefan Papp',
+  description: 'AI-augmented engineering consulting, integration, and training services.',
+  provider: { '@type': 'Person', name: 'Stefan Papp' },
+};
+
+const consultingIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+</svg>`;
+
+const integrationIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <polyline points="16 18 22 12 16 6"/>
+  <polyline points="8 6 2 12 8 18"/>
+</svg>`;
+
+const trainingIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+</svg>`;
+
+const services = [
+  {
+    title: 'Consulting',
+    description: 'I work directly with engineering leaders to assess where AI tooling creates the highest leverage in your specific stack and workflow. No generic playbooks — just honest analysis of what will actually move the needle for your team.',
+    icon: consultingIcon,
+  },
+  {
+    title: 'Integration',
+    description: 'From AI-assisted code review pipelines to context-aware developer tooling, I help teams instrument the right AI capabilities into existing workflows without disrupting what already works well.',
+    icon: integrationIcon,
+  },
+  {
+    title: 'Training',
+    description: 'Teaching engineers to work effectively alongside AI is not about prompt tricks — it is about building mental models for when to trust the model, when to push back, and how to maintain ownership of the output.',
+    icon: trainingIcon,
+  },
+];
+
+const caseStudies = [
+  {
+    title: 'Accelerating Feature Delivery at a Series B SaaS Company',
+    challenge: 'A 25-person engineering team was shipping features at a pace that felt acceptable — until a competitor launched the same roadmap in half the time. Leadership suspected process problems. The real bottleneck was the time engineers spent context-switching between writing, reviewing, and documenting code.',
+    approach: 'We introduced structured AI pair-programming workflows across the team, starting with a pilot squad of five. I ran weekly calibration sessions where engineers shared what worked, what hallucinated, and what they had stopped trusting. The workflow evolved quickly based on real signal rather than theory.',
+    outcome: 'After eight weeks, the pilot squad was closing tickets 35% faster with no increase in post-merge defects. The practices spread organically to the rest of the team over the following quarter, and the engineering manager reported spending half as much time on code review.',
+  },
+  {
+    title: 'Rebuilding Confidence in a Team Burned by Bad AI Tooling',
+    challenge: 'An engineering team had tried an AI coding assistant the previous year, had a bad experience with hallucinated API calls and subtle logic errors, and had collectively decided AI tools were not worth the risk. Leadership wanted to revisit the tooling landscape but needed to rebuild trust first.',
+    approach: 'Rather than pushing new tools immediately, I spent the first month mapping exactly which failure modes the team had experienced and why. We built a lightweight internal rubric for evaluating AI output in their specific domain — financial data pipelines where correctness was non-negotiable. Only then did we introduce tooling, starting with the lowest-risk surfaces.',
+    outcome: 'Six months later, the team was using AI assistance for test generation, documentation, and boilerplate reduction — the three areas where the rubric showed the highest confidence. They still applied manual scrutiny to core business logic, which was the right call. Adoption was voluntary and near-universal.',
+  },
+];
+---
+
+<BaseLayout
+  title="AI Augmented Engineering — Stefan Papp"
+  description="AI-augmented engineering consulting, integration, and training services. Helping engineering teams ship faster and smarter with the right AI tooling and workflows."
+  url="/ai-engineering"
+  jsonLd={jsonLd}
+>
+  <!-- Hero Banner -->
+  <section class="bg-navy pt-24 pb-20 px-4 md:px-8">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-bold text-white font-sans mb-6 leading-tight">
+        AI Augmented Engineering
+      </h1>
+      <p class="text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed">
+        Helping engineering teams move faster without sacrificing craft — by integrating AI where it earns trust and stepping back where it does not.
+      </p>
+    </div>
+  </section>
+
+  <!-- What Is It Section -->
+  <section class="py-16 md:py-24 px-4 md:px-8 bg-white">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-navy font-sans mb-8">What AI-augmented engineering actually means</h2>
+      <div class="space-y-6 text-slate leading-relaxed text-lg">
+        <p>
+          The phrase gets thrown around a lot, so let me be specific about what I mean. AI-augmented engineering is not about replacing engineers or automating away the hard parts. It is about giving engineers better leverage on the parts of the job that are high-effort and low-differentiation — boilerplate, documentation, test scaffolding, code review prep — so they can spend more time on the decisions that actually require judgment.
+        </p>
+        <p>
+          I have spent the last several years doing this with real engineering teams, not in demos. The pattern I see most often is that teams either adopt AI tools too aggressively and lose confidence when the outputs are wrong, or they avoid them entirely and cede a meaningful productivity advantage to competitors who are figuring this out. The teams that get it right are the ones who approach AI tooling the same way they approach any powerful dependency: with deliberate evaluation, clear boundaries, and ongoing calibration.
+        </p>
+        <p>
+          My work is focused on helping engineering organizations develop that discipline. That means honest assessment of where AI creates real value in your specific context, integration that fits your existing workflow rather than disrupting it, and the kind of team education that builds genuine confidence rather than fragile enthusiasm.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="bg-cream-dark py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-navy font-sans mb-4 text-center">How I work with teams</h2>
+      <p class="text-slate text-lg text-center mb-12 max-w-2xl mx-auto">
+        Engagements are structured around your team's actual situation, not a fixed product tier.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {services.map((service) => (
+          <ServiceBlock
+            title={service.title}
+            description={service.description}
+            icon={service.icon}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Section -->
+  <section class="py-16 md:py-24 px-4 md:px-8 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-navy font-sans mb-4">Case studies</h2>
+      <p class="text-slate text-lg mb-12 max-w-2xl">
+        Details are anonymized. Outcomes are real.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {caseStudies.map((study) => (
+          <CaseStudyCard
+            title={study.title}
+            challenge={study.challenge}
+            approach={study.approach}
+            outcome={study.outcome}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-navy py-20 px-4 md:px-8 text-center">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl md:text-5xl font-bold text-white font-sans mb-6">Let's discuss your project</h2>
+      <p class="text-white/75 text-lg mb-10 max-w-xl mx-auto">
+        Every team's situation is different. Tell me where you are and what you are trying to change.
+      </p>
+      <a
+        href="/contact"
+        class="inline-block bg-amber text-white font-semibold px-10 py-4 rounded hover:bg-amber-light transition-colors duration-200"
+      >
+        Get in touch
+      </a>
+    </div>
+  </section>
+</BaseLayout>
