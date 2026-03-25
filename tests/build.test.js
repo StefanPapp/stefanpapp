@@ -46,4 +46,15 @@ describe('Build output', () => {
     assert.ok(html.includes('/worldview'));
     assert.ok(html.includes('/contact'));
   });
+
+  it('index.html contains footer element', () => {
+    const html = readFileSync('dist/index.html', 'utf-8');
+    assert.ok(html.includes('<footer'));
+  });
+
+  it('index.html contains social links', () => {
+    const html = readFileSync('dist/index.html', 'utf-8');
+    assert.ok(html.includes('linkedin'));
+    assert.ok(html.includes('github'));
+  });
 });
