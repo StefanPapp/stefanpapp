@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Accordion from '../components/Accordion.astro';
+---
+
+<BaseLayout
+  title="What I Believe — Stefan Papp"
+  description="My worldview on liberty, growth culture, and the surprising philosophical relevance of cats."
+  url="/worldview"
+>
+  <!-- Hero Banner (cream, not navy) -->
+  <section class="bg-cream pt-24 pb-16 px-4 md:px-8">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="font-serif text-4xl md:text-6xl font-bold text-navy mb-6 leading-tight">
+        What I Believe
+      </h1>
+      <p class="font-serif text-lg md:text-xl text-slate leading-relaxed max-w-2xl">
+        Three essays on liberty, the culture that makes it sustainable, and why cats are a better model for intellectual life than dogs.
+      </p>
+    </div>
+  </section>
+
+  <!-- Sticky Anchor Nav -->
+  <nav class="bg-white border-b border-cream-dark sticky top-16 z-30 px-4 md:px-8 py-3">
+    <div class="max-w-3xl mx-auto flex flex-wrap gap-3">
+      <a href="#libertarianism" class="bg-navy text-white rounded-full px-4 py-2 text-sm font-semibold hover:bg-navy/80 transition-colors">
+        Libertarianism
+      </a>
+      <a href="#growth-culture" class="bg-navy text-white rounded-full px-4 py-2 text-sm font-semibold hover:bg-navy/80 transition-colors">
+        Growth Culture
+      </a>
+      <a href="#cats" class="bg-navy text-white rounded-full px-4 py-2 text-sm font-semibold hover:bg-navy/80 transition-colors">
+        Cats
+      </a>
+    </div>
+  </nav>
+
+  <!-- Accordion Essays -->
+  <section class="py-16 md:py-24 px-4 md:px-8 bg-white">
+    <div class="max-w-3xl mx-auto">
+      <Accordion
+        id="libertarianism"
+        title="Libertarianism: The Case for Minimal Interference"
+        defaultOpen={true}
+      >
+        <p>
+          I came to libertarianism not through ideology but through engineering. When you spend enough time designing systems, you develop a visceral appreciation for the cost of centralized control. A monolithic system that tries to coordinate every operation through a single authority becomes a bottleneck and a single point of failure. The more that has to flow through the center, the more fragile and slow the whole thing becomes. Distributed systems, by contrast, work by establishing clear interfaces, enforcing local contracts, and trusting implementations to handle their own domain. They are harder to build correctly, but they scale, they recover from failure gracefully, and they are far more adaptable to changing requirements.
+        </p>
+        <p>
+          I think social organization works the same way. A state that tries to coordinate and optimize a large number of human decisions — economic, social, personal — pays the same architectural costs. The information required to make good decisions is dispersed across millions of individuals who understand their own circumstances better than any central planner can. Aggregating that information is not just difficult; it is, in many domains, computationally intractable. The decisions made at the center are necessarily cruder than the decisions that would emerge from people acting on their own local knowledge.
+        </p>
+        <p>
+          I want to be precise about what I mean by libertarianism, because the word has accumulated a lot of unfortunate baggage. I am not arguing for the elimination of the state or for a society without mutual obligation. I am arguing for a strong prior toward non-interference: the burden of proof should sit with those who want to constrain voluntary behavior, not with those who want to be left alone. When the state does act, it should act narrowly, with clear justification, and with honest accounting of the costs — including the costs to the people who are being constrained, not just the benefits to the people who are doing the constraining.
+        </p>
+        <p>
+          This matters most in domains where individuals bear the direct consequences of their own choices. The argument for interference is weakest when the person making the decision is also the one who will live with the outcome, and strongest when the decision imposes costs on others who did not consent. I take externalities seriously. Pollution, fraud, and violence are not cases where libertarian principles counsel non-intervention — they are exactly the cases where coordination and enforcement are necessary. The problem is that the logic of externalities is routinely stretched far beyond its appropriate domain to justify interference in choices that are genuinely personal.
+        </p>
+        <p>
+          There is also a temperamental dimension to this. I am deeply skeptical of people who want to use political power to make other people's lives conform to their own vision of how life should be lived. This is true whether the vision being imposed is traditionally conservative or progressively reformist. The desire to run other people's lives is not a sign of wisdom or virtue; it is usually a sign that someone has not spent enough time seriously engaging with the possibility that they might be wrong. Epistemic humility — genuine uncertainty about one's own values and conclusions, not the performative kind — is a precondition for any political philosophy worth taking seriously.
+        </p>
+        <p>
+          I hold these views with some uncertainty. There are hard cases where I am genuinely unsure about where the right line falls between personal freedom and legitimate collective interest. I think the historical record of attempts to engineer social outcomes from the top down is sobering, but I also think there are real market failures that private coordination cannot resolve. What I resist is the confidence with which people on all sides of these questions assert that they know the right answers. The track record of that confidence is not good.
+        </p>
+        <p>
+          What I am most confident about is the meta-level claim: that a political culture which defaults to non-interference, which maintains genuine skepticism about the exercise of power, and which places the burden of justification on those who want to constrain rather than those who want to be free — that culture will make better decisions on average than one that defaults to intervention. Not because freedom always produces good outcomes, but because the alternative has a worse track record, and because the costs of paternalism are systematically undercounted by the people doing the counting.
+        </p>
+      </Accordion>
+
+      <Accordion
+        id="growth-culture"
+        title="Growth Culture: The Foundation Freedom Requires"
+      >
+        <p>
+          Libertarianism without a growth culture is a brittle thing. The philosophical case for individual freedom depends on a prior claim: that individuals, given latitude to make their own decisions and learn from the consequences, will generally arrive at better outcomes than they would under external guidance. This claim is not obviously true for all people in all circumstances. It requires a certain kind of person — someone who is willing to take feedback seriously, update their model of the world when the evidence changes, and treat failure as information rather than verdict.
+        </p>
+        <p>
+          Growth culture is the name I give to the set of practices and dispositions that make this kind of person more likely to develop and thrive. The core insight is simple: the capacity to learn — really learn, not just absorb information but update behavior — is not evenly distributed, and it is not fixed. It can be cultivated, and the environment you operate in makes an enormous difference to whether it develops or atrophies.
+        </p>
+        <p>
+          In engineering contexts, this manifests most clearly in how teams handle failure. A blameless post-mortem culture — one where the goal of examining an incident is to understand the system failure, not to assign individual fault — is more effective not just because it is kinder, but because it generates better information. When people fear that admitting mistakes will be used against them, they hide the mistakes. Hidden mistakes are the ones that compound. The feedback loops that organizations depend on for improvement require psychological safety as a precondition: people have to be willing to surface what went wrong before the system can learn from it.
+        </p>
+        <p>
+          I have seen the opposite culture, and it is striking how quickly it degrades. A team where blame is the default response to failure develops a distinctive defensive crouch. People stop taking ownership of hard problems because ownership is liability. Documentation gets written to protect the author rather than to help the reader. Code review becomes a performance of scrutiny rather than a genuine attempt to improve the work. The team continues to function, but it stops learning, and eventually it stops shipping anything ambitious.
+        </p>
+        <p>
+          The growth-minded alternative is not naive about accountability. Distinguishing between systemic failures and genuine negligence matters. But the default assumption should be that most people are trying to do good work with imperfect information under real constraints, and that the investigation after a failure should start with the system design, not the individual. When you make that assumption, you get honest accounts of what actually happened — and honest accounts are the raw material of improvement.
+        </p>
+        <p>
+          Outside of explicit professional contexts, growth culture shows up as a disposition toward curiosity over certainty. The people I most want to work with — and spend time with — are the ones who treat being wrong as interesting rather than threatening. Not because they lack conviction, but because they hold their convictions more loosely: as current best approximations rather than fixed identities. This makes them better at updating, better at listening, and more genuinely interesting in conversation, because they are actually processing what you say rather than waiting for you to finish so they can respond with the view they arrived with.
+        </p>
+        <p>
+          I think this disposition is also the right response to the scale of what we do not know. The world is complex in ways that exceed any individual's capacity to model accurately. People who have made their peace with that fact — who have internalized the limits of their own understanding rather than papering over them with false confidence — tend to make better decisions because they are more willing to gather information, consider alternatives, and defer to demonstrated expertise in domains where they lack it.
+        </p>
+        <p>
+          The connection back to liberty is direct. A culture of growth-minded individuals is one where the case for personal autonomy is genuinely strong — where people can be trusted with the latitude to make their own decisions, because they will use that latitude to learn rather than simply to entrench. Freedom and the capacity to benefit from freedom are not separable. Cultivating the second is not paternalism; it is the precondition for the first being worth defending.
+        </p>
+      </Accordion>
+
+      <Accordion
+        id="cats"
+        title="Cats as Cultural Archetype: Why Independence Beats Obedience"
+      >
+        <p>
+          I want to make a serious philosophical argument using cats, which I recognize sounds like a setup for something not serious at all. Bear with me.
+        </p>
+        <p>
+          The standard framing of the cat-dog divide is that dogs are loyal and cats are aloof. Dogs come when called; cats ignore you until they decide they want attention, and then it is on their terms. Dog people tend to find this frustrating; cat people tend to find it clarifying. I am firmly in the second camp, and not just because I find cats interesting as animals. I think the behavioral archetype the cat represents — voluntary cooperation, self-directed attention, indifference to approval — maps onto a set of intellectual and social virtues that I genuinely admire and try to cultivate.
+        </p>
+        <p>
+          Consider what it means that a cat's attention is voluntary. When a cat sits with you, it is because it has chosen to. There is no training, no conditioning, no social debt being repaid. The cat is not performing affection — it is either present or it is not, and its presence means something precisely because it cannot be compelled. Compare this to approval-seeking behavior, which is extremely common in humans and almost completely useless as a signal. People who tell you what you want to hear because they want you to like them are not giving you information about the world; they are giving you information about their desire to be liked. The cat that genuinely prefers your company is more informative than the dog that has been bred for ten thousand years to want your approval regardless of whether you deserve it.
+        </p>
+        <p>
+          This connects to something I think is important in intellectual life: the ability to form and hold views independent of social pressure. The approval-seeking reflex is powerful and largely automatic, and it corrupts reasoning in subtle ways. People change their stated positions not because they have encountered new evidence but because they have encountered social friction. They frame their arguments to be acceptable rather than to be accurate. They avoid conclusions that will make people they want to impress uncomfortable. None of this is dishonest in the simple sense — it is mostly unconscious — but the cumulative effect is a kind of epistemic drift away from truth and toward approval.
+        </p>
+        <p>
+          The cat archetype is a corrective to this. A cat does not recalibrate its behavior based on whether you are pleased with it. It has its own model of the world and acts on that model. Sometimes this makes cats inconvenient and occasionally maddening. But it also makes them honest. You know where you stand with a cat, and that clarity has real value.
+        </p>
+        <p>
+          There is also something to be said for the cat's relationship to attention. Cats are self-directed in a way that dogs, typically, are not. A dog often needs to know what you want from it. A cat is usually already engaged with something — a window, a shadow, the specific texture of a particular corner of furniture — without any reference to your preferences. This self-directed attention is not selfishness; it is a form of autonomy. The cat has an interior life that does not require external validation to sustain itself.
+        </p>
+        <p>
+          I think this is the right model for intellectual work. The best thinking happens when you are genuinely interested in the problem for its own sake, not because someone is grading you or because you want to be seen as the kind of person who thinks about such things. The external motivators — status, approval, money — are not nothing, but they are a poor substitute for intrinsic curiosity, and they have a tendency to corrupt the work when they become primary. Research that is designed to be impressive rather than true is less likely to be true. Writing that is designed to be liked rather than clear is less likely to be clear.
+        </p>
+        <p>
+          I am also attracted to the cat's particular form of social relationship: available, but on its own terms. Not indifferent to connection — cats form genuine attachments — but not defined by it. A cat that is occupied will not interrupt what it is doing to perform sociability. It will come when it is ready. This is not rudeness; it is a kind of honesty about the division between one's own project and one's social obligations.
+        </p>
+        <p>
+          The reason I include this on a professional website, where it is an unusual thing to include, is that I think it is a genuine personality differentiator. The disposition I am describing — voluntary engagement, self-directed attention, indifference to approval, honesty about where one stands — is not universal, and working with people who have it is qualitatively different from working with people who do not. I would rather be honest about the fact that I operate this way, and let people self-select accordingly, than present a more universally palatable front that misrepresents how I actually work and think.
+        </p>
+        <p>
+          The cat, in the end, is a model for a certain kind of intellectual integrity: showing up because you want to, staying engaged because the thing is genuinely interesting, and leaving when it is not. There are worse principles to build a working life around.
+        </p>
+      </Accordion>
+    </div>
+  </section>
+</BaseLayout>

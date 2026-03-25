@@ -1,0 +1,68 @@
+---
+interface Props {
+  title: string;
+  id: string;
+  defaultOpen?: boolean;
+}
+const { title, id, defaultOpen = false } = Astro.props;
+---
+
+<div class="accordion-item border-b border-cream-dark" id={id}>
+  <button
+    id={`${id}-trigger`}
+    class="accordion-trigger w-full flex items-center justify-between py-6 text-left group"
+    aria-expanded={String(defaultOpen)}
+    aria-controls={`${id}-content`}
+  >
+    <h3 class="font-serif font-bold text-xl lg:text-2xl text-navy group-hover:text-amber transition-colors">
+      {title}
+    </h3>
+    <svg
+      class:list={[
+        'accordion-icon w-6 h-6 text-amber transition-transform flex-shrink-0 ml-4',
+        defaultOpen && 'rotate-180',
+      ]}
+      fill="none" stroke="currentColor" viewBox="0 0 24 24"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div
+    id={`${id}-content`}
+    class:list={['accordion-content overflow-hidden', !defaultOpen && 'hidden']}
+    role="region"
+    aria-labelledby={`${id}-trigger`}
+  >
+    <div class="pb-8 font-serif text-slate leading-relaxed space-y-4">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.accordion-trigger').forEach(function (trigger) {
+    trigger.addEventListener('click', function () {
+      var expanded = trigger.getAttribute('aria-expanded') === 'true';
+      var contentId = trigger.getAttribute('aria-controls');
+      var content = document.getElementById(contentId);
+      var icon = trigger.querySelector('.accordion-icon');
+      trigger.setAttribute('aria-expanded', String(!expanded));
+      if (content) content.classList.toggle('hidden');
+      if (icon) icon.classList.toggle('rotate-180');
+    });
+  });
+
+  function handleAnchorNav() {
+    var hash = window.location.hash.slice(1);
+    if (!hash) return;
+    var target = document.getElementById(hash);
+    if (!target || !target.classList.contains('accordion-item')) return;
+    var trigger = target.querySelector('.accordion-trigger');
+    var isExpanded = trigger && trigger.getAttribute('aria-expanded') === 'true';
+    if (!isExpanded && trigger) trigger.click();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  handleAnchorNav();
+  window.addEventListener('hashchange', handleAnchorNav);
+</script>
