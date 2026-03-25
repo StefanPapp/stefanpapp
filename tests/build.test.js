@@ -57,4 +57,20 @@ describe('Build output', () => {
     assert.ok(html.includes('linkedin'));
     assert.ok(html.includes('github'));
   });
+
+  it('index.html contains hero split section', () => {
+    const html = readFileSync('dist/index.html', 'utf-8');
+    assert.ok(html.includes('hero-split'));
+  });
+
+  it('index.html contains both CTAs', () => {
+    const html = readFileSync('dist/index.html', 'utf-8');
+    assert.ok(html.includes('Read my thinking'));
+    assert.ok(html.includes('Work with me'));
+  });
+
+  it('index.html contains social proof section', () => {
+    const html = readFileSync('dist/index.html', 'utf-8');
+    assert.ok(html.includes('social-proof'));
+  });
 });

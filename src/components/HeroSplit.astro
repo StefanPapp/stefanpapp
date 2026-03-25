@@ -1,0 +1,60 @@
+---
+interface Props {
+  leftHeadline: string;
+  leftSubtext: string;
+  leftCta: { label: string; href: string };
+  rightHeadline: string;
+  rightSubtext: string;
+  rightCta: { label: string; href: string };
+  headshotSrc?: string;
+}
+
+const { leftHeadline, leftSubtext, leftCta, rightHeadline, rightSubtext, rightCta, headshotSrc } = Astro.props;
+---
+
+<section id="hero-split" class="min-h-screen grid grid-cols-1 md:grid-cols-2">
+  <!-- Right side: professional — shown FIRST on mobile -->
+  <div class="order-1 md:order-2 bg-white flex flex-col items-center justify-center px-8 py-16 md:px-16 font-sans">
+    {headshotSrc && (
+      <img
+        src={headshotSrc}
+        alt="Stefan Papp"
+        class="w-32 h-32 rounded-full object-cover mb-8 shadow-md"
+        loading="eager"
+        width="128"
+        height="128"
+      />
+    )}
+    <h1 class="text-4xl lg:text-6xl font-bold text-navy mb-6 leading-tight text-center md:text-left">
+      {rightHeadline}
+    </h1>
+    <p class="text-lg text-slate mb-8 max-w-md text-center md:text-left">
+      {rightSubtext}
+    </p>
+    <a
+      href={rightCta.href}
+      class="inline-block bg-amber text-white font-semibold px-8 py-3 rounded hover:bg-amber-light transition-colors duration-200"
+    >
+      {rightCta.label}
+    </a>
+  </div>
+
+  <!-- Left side: idealistic — shown SECOND on mobile -->
+  <div class="order-2 md:order-1 bg-cream relative flex flex-col items-center justify-center px-8 py-16 md:px-16 font-serif">
+    <!-- Decorative amber left edge line (desktop only) -->
+    <div class="hidden md:block absolute left-0 top-16 bottom-16 w-1 bg-amber rounded-r"></div>
+
+    <h2 class="text-4xl lg:text-6xl font-bold text-navy mb-6 leading-tight text-center md:text-left">
+      {leftHeadline}
+    </h2>
+    <p class="text-lg italic text-slate mb-8 max-w-md text-center md:text-left font-serif">
+      {leftSubtext}
+    </p>
+    <a
+      href={leftCta.href}
+      class="inline-block border-2 border-amber text-amber font-semibold px-8 py-3 rounded hover:bg-amber hover:text-white transition-colors duration-200"
+    >
+      {leftCta.label}
+    </a>
+  </div>
+</section>

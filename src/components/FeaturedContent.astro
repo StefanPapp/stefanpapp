@@ -1,0 +1,45 @@
+---
+interface Props {
+  cards: {
+    title: string;
+    description: string;
+    href: string;
+    variant: 'idealistic' | 'professional';
+  }[];
+}
+
+const { cards } = Astro.props;
+---
+
+<section class="py-16 px-8 bg-white">
+  <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
+    {cards.map((card) => (
+      <a
+        href={card.href}
+        class:list={[
+          'group block rounded-lg p-8 border transition-shadow duration-200 hover:shadow-lg',
+          card.variant === 'idealistic'
+            ? 'bg-cream border-cream-dark font-serif'
+            : 'bg-white border-gray-200 font-sans',
+        ]}
+      >
+        <h3
+          class:list={[
+            'text-xl font-bold mb-3 transition-colors duration-200 group-hover:text-amber',
+            card.variant === 'idealistic' ? 'text-navy font-serif' : 'text-navy font-sans',
+          ]}
+        >
+          {card.title}
+        </h3>
+        <p
+          class:list={[
+            'text-slate text-sm leading-relaxed',
+            card.variant === 'idealistic' ? 'font-serif italic' : 'font-sans',
+          ]}
+        >
+          {card.description}
+        </p>
+      </a>
+    ))}
+  </div>
+</section>

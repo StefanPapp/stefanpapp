@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSplit from '../components/HeroSplit.astro';
+import SocialProof from '../components/SocialProof.astro';
+import FeaturedContent from '../components/FeaturedContent.astro';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -8,7 +11,45 @@ const jsonLd = {
   url: 'https://stefanpapp.com',
   jobTitle: 'AI-Augmented Engineering Leader',
   description: 'Engineering leader, investor, and independent thinker bridging idealism and pragmatism.',
+  sameAs: [
+    'https://www.linkedin.com/in/stefanpapp',
+    'https://github.com/stefanpapp',
+  ],
 };
+
+const socialProofItems = [
+  { value: '15+', label: 'Years in Engineering Leadership' },
+  { value: '50+', label: 'Engineers Led' },
+  { value: '10+', label: 'Companies Advised' },
+  { value: '8+',  label: 'Angel Investments' },
+];
+
+const featuredCards = [
+  {
+    title: 'AI-Augmented Engineering',
+    description: 'How I use AI tools to make engineering teams dramatically more productive — and what that means for how we hire, build, and lead.',
+    href: '/ai-engineering',
+    variant: 'professional' as const,
+  },
+  {
+    title: 'What I Believe',
+    description: 'On liberty, the compounding power of ideas, and why independent thinking is the highest-leverage skill in an age of noise.',
+    href: '/worldview',
+    variant: 'idealistic' as const,
+  },
+  {
+    title: 'Data Transformations',
+    description: 'Real-world patterns for turning messy data into reliable pipelines. Hard-won lessons from building data infrastructure at scale.',
+    href: '/data-transformations',
+    variant: 'professional' as const,
+  },
+  {
+    title: 'Investment Philosophy',
+    description: 'Why I back founders who think differently — and the mental models I use to evaluate ideas at the earliest stages.',
+    href: '/investments',
+    variant: 'idealistic' as const,
+  },
+];
 ---
 
 <BaseLayout
@@ -17,7 +58,27 @@ const jsonLd = {
   url="/"
   jsonLd={jsonLd}
 >
-  <section class="min-h-screen flex items-center justify-center">
-    <p class="text-2xl text-navy">Landing page content coming soon.</p>
+  <HeroSplit
+    leftHeadline="Ideas shape the world."
+    leftSubtext="On liberty, growth, and why independent thinking matters more than ever. A worldview grounded in reason, not convention."
+    leftCta={{ label: 'Read my thinking', href: '/worldview' }}
+    rightHeadline="I build what's next."
+    rightSubtext="AI-augmented engineering leader helping companies ship faster with smarter tools. 15+ years building and leading high-performance engineering teams."
+    rightCta={{ label: 'Work with me', href: '/contact' }}
+  />
+
+  <SocialProof items={socialProofItems} />
+
+  <FeaturedContent cards={featuredCards} />
+
+  <!-- CTA Band -->
+  <section class="bg-navy py-20 px-8 text-center">
+    <h2 class="text-4xl lg:text-5xl font-bold text-white font-sans mb-8">Let's talk.</h2>
+    <a
+      href="/contact"
+      class="inline-block bg-amber text-white font-semibold px-10 py-4 rounded hover:bg-amber-light transition-colors duration-200"
+    >
+      Get in touch
+    </a>
   </section>
 </BaseLayout>

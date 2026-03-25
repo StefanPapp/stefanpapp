@@ -1,0 +1,18 @@
+---
+interface Props {
+  items: { label: string; value: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<section id="social-proof" class="bg-cream-dark py-16 px-8">
+  <div class="flex flex-wrap justify-center gap-8 md:gap-16 max-w-5xl mx-auto">
+    {items.map((item) => (
+      <div class="flex flex-col items-center text-center">
+        <span class="text-4xl md:text-5xl font-bold text-navy font-sans">{item.value}</span>
+        <span class="text-sm text-slate font-sans mt-2 max-w-[120px]">{item.label}</span>
+      </div>
+    ))}
+  </div>
+</section>
