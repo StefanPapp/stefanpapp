@@ -90,9 +90,9 @@ const navLinks = [
       var observer = new IntersectionObserver(
         function (entries) {
           if (entries[0].isIntersecting) {
-            h.classList.remove('bg-navy', 'shadow-lg');
+            h.classList.remove('shadow-lg');
           } else {
-            h.classList.add('bg-navy', 'shadow-lg');
+            h.classList.add('shadow-lg');
           }
         },
         { threshold: 0 }
