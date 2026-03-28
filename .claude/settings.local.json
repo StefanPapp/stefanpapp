@@ -20,7 +20,12 @@
       "Bash(npx playwright:*)",
       "Bash(npm i:*)",
       "Bash(npm run:*)",
-      "Bash(npm test:*)"
+      "Bash(npm test:*)",
+      "Bash(find /Users/stefanpapp/src/stefanpapp -name utils* -o -name lib* -o -name data* -o -name constant*)",
+      "Bash(cat /Users/stefanpapp/src/stefanpapp/src/components/*.astro)",
+      "Bash(grep -rn \"yield\\\\|dividend\\\\|catalyst\\\\|490\\\\|toFixed\" /Users/stefanpapp/src/stefanpapp/src --include=*.astro --include=*.ts --include=*.js --include=*.tsx --include=*.jsx)",
+      "Bash(find /Users/stefanpapp/src/stefanpapp/src /Users/stefanpapp/src/stefanpapp/public /Users/stefanpapp/src/stefanpapp/dist -type f \\\\\\(-name *.astro -o -name *.ts -o -name *.tsx -o -name *.js -o -name *.jsx -o -name *.json -o -name *.html \\\\\\) ! -path */node_modules/*)",
+      "Skill(update-config)"
     ]
   }
 }

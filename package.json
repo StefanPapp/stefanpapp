@@ -9,7 +9,9 @@
     "test": "node --test tests/build.test.js",
     "test:e2e": "npx playwright test",
     "check": "astro check",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "vercel --prod",
+    "deploy:preview": "vercel deploy"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.8",
