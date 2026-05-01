@@ -26,7 +26,13 @@
       "Bash(grep -rn \"yield\\\\|dividend\\\\|catalyst\\\\|490\\\\|toFixed\" /Users/stefanpapp/src/stefanpapp/src --include=*.astro --include=*.ts --include=*.js --include=*.tsx --include=*.jsx)",
       "Bash(find /Users/stefanpapp/src/stefanpapp/src /Users/stefanpapp/src/stefanpapp/public /Users/stefanpapp/src/stefanpapp/dist -type f \\\\\\(-name *.astro -o -name *.ts -o -name *.tsx -o -name *.js -o -name *.jsx -o -name *.json -o -name *.html \\\\\\) ! -path */node_modules/*)",
       "Skill(update-config)",
-      "Bash(vercel deploy:*)"
+      "Bash(vercel deploy:*)",
+      "Bash(npm outdated *)",
+      "Bash(rg -o '\\\\bslate-\\\\d+\\\\b' /Users/stefanpapp/src/marketing/stefanpapp/src --no-filename)",
+      "Bash(rg -o '\\\\b\\(text|bg|border\\)-\\(slate|navy|cream|amber\\)\\(-\\\\w+\\)?\\\\b' /Users/stefanpapp/src/marketing/stefanpapp/src --no-filename)",
+      "Bash(rg '\\\\bborder\\(-[trblxy]\\)?\\(-\\\\d\\)?\\\\b' /Users/stefanpapp/src/marketing/stefanpapp/src --no-filename -o)",
+      "Bash(npx @tailwindcss/upgrade@latest --force)",
+      "Bash(npm uninstall *)"
     ]
   }
 }
