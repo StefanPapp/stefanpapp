@@ -3,45 +3,94 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const roles = [
   {
+    timeframe: '2025 – present',
+    title: 'Stealth Startup',
+    org: 'Pythia · Yerevan / Vienna',
+    description:
+      'Building a new venture at the intersection of data, AI, and emerging markets. Details to follow once we are out of stealth.',
+  },
+  {
+    timeframe: '2018 – present',
+    title: 'Data Professional & Strategy Consultant',
+    org: 'Sophron Engineering',
+    description:
+      'Independent consulting for organizations, many of them in finance, that need to get their data platforms under control and turn them into AI/ML value. Hands-on cloud-native architecture combined with strategy workshops for leadership teams.',
+  },
+  {
+    timeframe: '2015 – present',
+    title: 'Partner',
+    org: 'Vienna Data Science Group',
+    description:
+      'Partner in the Vienna-based NGO that builds a platform for exchanging knowledge on applied data science, AI, and machine learning. Lead author of The Handbook of Data Science and AI, written with the VDSG community.',
+  },
+  {
+    timeframe: '2023 – 2025',
+    title: 'Chair, AI Taskforce · Deputy Chair, Energy Commission',
+    org: 'ICC Armenia',
+    description:
+      'Chaired the AI Taskforce of the International Chamber of Commerce in Armenia after serving as Deputy Chair of its Energy Commission. Policy and ecosystem work on how Armenia positions itself in data and AI.',
+  },
+  {
     timeframe: '2020 – 2024',
-    title: 'VP of Engineering',
-    org: 'Series C SaaS — Revenue Intelligence',
+    title: 'Chapter Manager',
+    org: 'AlphaZetta',
     description:
-      'Scaled the engineering org from 18 to 65 across four product squads. Introduced quarterly planning, a blameless incident review process, and a staff-level career ladder. Led the platform rewrite that enabled the company to close its Series C at a 6× ARR multiple.',
+      'Ran a regional chapter of the AlphaZetta collective of independent data and AI professionals.',
   },
   {
-    timeframe: '2017 – 2020',
-    title: 'Engineering Director',
-    org: 'Data Analytics Platform',
+    timeframe: '2020 – 2021',
+    title: 'Co-Founder',
+    org: 'RebornWithAI',
     description:
-      'Owned the full-stack data pipeline and the team of 22 engineers building it. Rebuilt the ingestion layer to handle 10× data volume after a major customer acquisition. Reduced p99 query latency from 4.2 s to 380 ms without a schema migration.',
+      'Co-founded an AI startup. Also advised goPassport during 2020.',
   },
   {
-    timeframe: '2014 – 2017',
-    title: 'Senior Engineering Manager',
-    org: 'E-Commerce Scale-Up',
+    timeframe: '2016 – 2017',
+    title: 'Senior Data Architect · Data Architect',
+    org: 'Sainsbury\'s Bank · The unbelievable Machine Company',
     description:
-      'Managed three teams covering checkout, catalog, and search. Led the migration from a monolithic Rails app to a service-oriented architecture over 18 months. Zero downtime during Black Friday at 40× peak load — the first time that had happened in the company\'s history.',
+      'Data architecture roles in UK retail banking and at a German big data services company, designing and delivering enterprise data platforms.',
   },
   {
-    timeframe: '2011 – 2014',
-    title: 'Tech Lead',
-    org: 'Fintech Startup',
+    timeframe: '2014 – 2016',
+    title: 'Big Data Consultant',
+    org: 'Teradata',
     description:
-      'First engineering hire. Built and later led a team of seven. Designed the payments integration and the real-time fraud detection pipeline that processed $2 M in daily transaction volume at the time of acquisition. Helped the founders through the technical due diligence process.',
+      'Early big data practitioner for Teradata in Central and Eastern Europe, helping enterprise customers adopt Hadoop-era platforms alongside their data warehouses.',
+  },
+  {
+    timeframe: '2011 – 2013',
+    title: 'Scale Out Program Lead',
+    org: 'bwin',
+    description:
+      'Led the scale-out program at one of Europe\'s largest online gaming companies, followed by freelance data and architecture work until 2014.',
+  },
+  {
+    timeframe: '2003 – 2010',
+    title: 'Chief Technology Officer',
+    org: 'Hagenberg Software GmbH',
+    description:
+      'Seven years as CTO of a software company in Upper Austria, responsible for technology, engineering, and delivery.',
+  },
+  {
+    timeframe: '1999 – 2003',
+    title: 'Associate Development Manager · Rollout Team',
+    org: 'JoWooD Productions · Siemens',
+    description:
+      'Early career in game development management at JoWooD and on a Siemens rollout team, followed by a Lead Developer role at rubicon in 2010 – 2011.',
   },
 ];
 
 const testimonials = [
   {
     quote:
-      'Stefan has a rare quality among engineering leaders: he sets direction clearly, then genuinely gets out of the way. He trusts you to figure out the how, and that trust is not passive — it is the kind that makes you want to rise to meet it. In four years I never once felt micromanaged, and I never once felt unsupported.',
-    attribution: '— Staff Engineer, Series C SaaS (worked together 2020–2024)',
+      'Stefan and I worked together in a challenging and long running big data project related to autonomous driving. He was a major contributor to the solution. It was a pleasure to work with him. Team was happy to have him on board and would be happy to get him back for new engagements in the future.',
+    attribution: '— Michael Wolfrath, via LinkedIn',
   },
   {
     quote:
-      'What sets Stefan apart is how he handles hard conversations. He does not soften uncomfortable feedback until it loses its point, and he does not deliver it in a way that makes it about him. You leave those conversations with a clearer picture of the problem and a sense that you have an ally in solving it. I learned more about how to communicate clearly in two years working for him than in the previous six combined.',
-    attribution: '— Engineering Manager, Data Analytics Platform (worked together 2018–2020)',
+      'Stefan and I worked together on a big data project with an encompassing technology stack. I\'d like to highlight Stefan\'s diverse experience in the field of big data and software development. Collaborating with him I was constantly able to learn and gain deeper insights into the world of data engineering. I especially value the experience Stefan gained from projects around the world, which gives him a refreshing perspective on a variety of topics. It made me enjoy working together with Stefan very much.',
+    attribution: '— Matthias Bidlingmeyer, via LinkedIn',
   },
 ];
 ---
@@ -86,7 +135,8 @@ const testimonials = [
     <div class="max-w-6xl mx-auto">
       <h2 class="text-3xl md:text-4xl font-bold text-navy font-sans mb-4">Track record</h2>
       <p class="text-slate text-lg mb-12 max-w-2xl">
-        Company names are omitted out of respect for former employers. Details are accurate.
+        Almost three decades in software, data, and AI, from game development in Austria to data platforms across Europe and, more recently, building in Armenia. Alongside these roles I have lectured at UAS Technikum Wien and mentored founders through EPIC and the Armenian Engineers &amp; Scientists of America. The full history is on
+        <a href="https://www.linkedin.com/in/stefanpapp" class="text-amber hover:underline" rel="noopener">LinkedIn</a>.
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {roles.map((role) => (
@@ -106,7 +156,11 @@ const testimonials = [
   <!-- Testimonials Section -->
   <section class="py-16 md:py-24 px-4 md:px-8 bg-white">
     <div class="max-w-3xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold text-navy font-sans mb-12">What people say</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-navy font-sans mb-4">What people say</h2>
+      <p class="text-slate text-lg mb-12">
+        Recommendations from people I have worked with. More are on
+        <a href="https://www.linkedin.com/in/stefanpapp" class="text-amber hover:underline" rel="noopener">LinkedIn</a>.
+      </p>
       <div class="space-y-12">
         {testimonials.map((t) => (
           <blockquote class="border-l-4 border-amber pl-6">
